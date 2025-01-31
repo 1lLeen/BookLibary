@@ -1,6 +1,8 @@
-﻿namespace LibaryAPI.Domain.DTOs;
+﻿using LibaryAPI.Domain.Interfaces;
 
-public class DtoBook
+namespace LibaryAPI.Domain.DTOs.Books;
+
+public class BaseBookDto:IBase
 {
     public int Id { get; set; }
     public string Name { get; set; }

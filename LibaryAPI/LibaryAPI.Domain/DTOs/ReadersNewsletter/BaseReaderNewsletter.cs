@@ -1,6 +1,7 @@
-﻿namespace LibaryAPI.Domain.DTOs;
+﻿using LibaryAPI.Domain.Interfaces;
 
-public class DtoReaderNewsletter
+namespace LibaryAPI.Domain.DTOs.ReadersNewsletter;
+public class BaseReaderNewsletter:IBase
 {
     public int Id { get; set; }
     public int IdBook { get; set; }

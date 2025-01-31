@@ -1,12 +1,13 @@
-﻿using System.Globalization;
+﻿using LibaryAPI.Domain.Interfaces;
 
-namespace LibaryAPI.Domain.DTOs;
+namespace LibaryAPI.Domain.DTOs.Readers;
 
-public class DtoReader
+public class BaseReaderDto:IBase
 {
     public int Id { get; set; }
     public string FullName { get; set; }
     public DateTime DateOfBirth { get; set; }
     public int AccountNumber { get; set; }
+
 }
 

@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace LibaryAPI.Domain.DTOs;
+﻿namespace LibaryAPI.Domain.DTOs;
 
 public class DtoBook
 {

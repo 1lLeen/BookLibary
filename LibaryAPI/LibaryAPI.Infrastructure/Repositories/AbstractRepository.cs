@@ -1,6 +1,7 @@
 ﻿using LibaryAPI.Infrastructure.Models;
 using LibaryAPI.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace LibaryAPI.Infrastructure.Repositories;
 
@@ -32,6 +33,11 @@ public class AbstractRepository<TModel> : IAbstractRepository<TModel> where TMod
     public async Task<IEnumerable<TModel>> GetAllAsync()
     {
         return await _dbSet.ToListAsync();
+    }
+
+    public async Task<TModel> GetByIdAsync(int id)
+    {
+        return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<TModel> GetAsync(TModel model)

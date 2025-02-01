@@ -1,5 +1,5 @@
 ﻿namespace LibaryAPI.Infrastructure.Models.Readers;
-public class ReadersNewsletterModel:BaseModel
+public class ReaderNewsletterModel:BaseModel
 { 
     public int IdBook { get; set; }
     public int IdReader { get; set; }

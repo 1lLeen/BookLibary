@@ -1,5 +1,5 @@
 ﻿namespace LibaryAPI.Infrastructure.Models.Readers;
-public class ReadersModel:BaseModel
+public class ReaderModel:BaseModel
 { 
     public string FullName { get; set; }
     public DateTime DateOfBirth { get; set; }

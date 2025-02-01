@@ -7,14 +7,15 @@ namespace LibaryAPI.Infrastructure;
 public class LibaryDbContext:DbContext
 {
     public LibaryDbContext(DbContextOptions<LibaryDbContext> options) : base(options) { }
-    public LibaryDbContext() { }
-
+    public LibaryDbContext() { }///*Unable to create a 'DbContext' of type 'RuntimeType'. The exception 'Unable to resolve service for type*///
+    /*Решение проблемы с проблемы с помощью пустого конструктора*/
     public DbSet<BookModel> Books { get; set; }
     public DbSet<ReaderModel> Readers { get; set; }
     public DbSet<ReaderNewsletterModel> ReadersNewsletter { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // использование Fluent API
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new BaseModelConfiguration<BookModel>());
         modelBuilder.ApplyConfiguration(new BaseModelConfiguration<ReaderModel>());

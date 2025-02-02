@@ -31,9 +31,9 @@ public class ReaderService : AbstractService<IReaderRepository, ReaderModel, IGe
         return mapper.Map<GetReaderDto>(result);
     }
 
-    public async Task<GetReaderDto> UpdateReaderAsync(UpdateReaderDto update)
+    public async Task<GetReaderDto> UpdateReaderAsync(int id, UpdateReaderDto update)
     {
-        var reader = await _repository.GetAsync(mapper.Map<ReaderModel>(update));
+        var reader = await _repository.GetByIdAsync(id);
         if(reader != null)
         {
             reader.FullName = update.FullName;

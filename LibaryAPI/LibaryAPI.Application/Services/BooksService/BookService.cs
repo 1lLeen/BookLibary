@@ -32,7 +32,7 @@ public class BookService : AbstractService<IBookRepository, BookModel, IGet, ICr
 
     public async Task<GetBookDto> UpdateBookAsync(int id, UpdateBookDto updateBookDto)
     {
-        var book = await _repository.GetAsync(mapper.Map<BookModel>(updateBookDto));
+        var book = await _repository.GetByIdAsync(id);
         if(book != null)
         {
             book.Name = updateBookDto.Name;

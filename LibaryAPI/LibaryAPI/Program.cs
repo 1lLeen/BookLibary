@@ -1,3 +1,5 @@
+using LibaryAPI.Application.MappingConfig;
+using LibaryAPI.Application;
 using LibaryAPI.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,10 +12,19 @@ builder.Configuration
 .Build();
 
 builder.Services.AddDbContext<LibaryDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaulConneection")));
-
-
+builder.Services.RegistrationLogger();
+builder.Services.RegistrationAutoMapper();
+builder.Services.RegistrationRepositories();
+builder.Services.RegistrationServices();
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API WSVAP (WebSmartView)", Version = "v1" });
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
+});
+
+
+builder.Services.AddControllers(); 
 builder.Services.AddOpenApi();
 
 var app = builder.Build();

@@ -27,16 +27,14 @@ public class AbstractService<TRepository, TModel, TGet, TCreate, TUpdate>
     {
         var model = mapper.Map<TModel>(entity);
         await _repository.CreateAsync(model);
-        model = await _repository.GetAsync(model);
-        if(model != null)
-            logger.LogInformation($"Created {model.Id}");
+        logger.LogInformation($"Created {model.Id}");
         var result = mapper.Map<TGet>(model);
         return result;
     }
 
     public async Task<TGet> DeleteAsync(int id)
     {
-        var model = await _repository.GetAsync(mapper.Map<TModel>(await GetByIdAsync(id)));
+        var model = await _repository.GetByIdAsync(id);
         if (model == null)
         {
             logger.LogError($"not found with this ID:{id}");
@@ -58,7 +56,7 @@ public class AbstractService<TRepository, TModel, TGet, TCreate, TUpdate>
 
     public async Task<TGet> GetByIdAsync(int id)
     {
-        var result = await _repository.GetAsync(mapper.Map<TModel>(await GetByIdAsync(id)));
+        var result = await _repository.GetByIdAsync(id);
         logger.LogInformation($"Id {id} and \n get {result}");
         return mapper.Map<TGet>(result);
     }

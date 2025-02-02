@@ -40,11 +40,6 @@ public class AbstractRepository<TModel> : IAbstractRepository<TModel> where TMod
         return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<TModel?> GetAsync(TModel model)
-    {
-        return await _dbSet.FindAsync(model);
-    }
-
     public async Task<TModel> UpdateAsync(TModel model)
     {
         model.UpdatedTime = DateTime.Now;

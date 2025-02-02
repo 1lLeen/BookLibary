@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 namespace LibaryAPI.Infrastructure;
 public class LibaryDbContext:DbContext
 {
-    public LibaryDbContext(DbContextOptions<LibaryDbContext> options) : base(options) { }
+    public LibaryDbContext(DbContextOptions<LibaryDbContext> options) : base(options) {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
     public LibaryDbContext() { }///*Unable to create a 'DbContext' of type 'RuntimeType'. The exception 'Unable to resolve service for type*///
     /*Решение проблемы с проблемы с помощью пустого конструктора*/
     public DbSet<BookModel> Books { get; set; }

@@ -25,4 +25,18 @@ public class BookService : AbstractService<IBookRepository, BookModel, GetBookDt
         var result = await _repository.GetAllAsync();
         return mapper.Map<IEnumerable<GetBookDto>>(result.Where(x => x.Publisher == publisher));
     }
+
+    public async Task<GetBookDto> UpdateBookAsync(int id, UpdateBookDto update)
+    {
+        var model = await _repository.GetByIdAsync(id);
+        
+        model.Name = update.Name;
+        model.Author = update.Author;
+        model.Publisher = update.Publisher;
+        model.CountPage = update.CountPage;
+        model.Price = update.Price;
+
+        var result = await _repository.UpdateAsync(model);
+        return mapper.Map<GetBookDto>(result);
+    }
 }

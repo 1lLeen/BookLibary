@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 namespace LibaryAPI.Controllers;
 
 [Route("api/[controller]/[action]")] 
+[ApiController]
 public class BookController : ControllerBase
 {
     protected readonly IBookService _bookService;
@@ -47,10 +48,10 @@ public class BookController : ControllerBase
         return await _bookService.CreateAsync(create);
     }
 
-    [HttpPut]
-    public async Task<GetBookDto> UpdateBookAsync(UpdateBookDto update)
-    {
-        return await _bookService.UpdateAsync(update);
+    [HttpPut("{id}")]
+    public async Task<GetBookDto> UpdateBookAsync(int id, UpdateBookDto update)
+    { 
+        return await _bookService.UpdateBookAsync(id, update);
     }
 
     [HttpDelete("{id}")]

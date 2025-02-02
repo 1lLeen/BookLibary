@@ -1,16 +1,12 @@
-﻿using AutoMapper;
-using LibaryAPI.Application.Services.Interfaces;
+﻿using AutoMapper; 
 using LibaryAPI.Domain.Interfaces;
-using LibaryAPI.Infrastructure.Models;
-using LibaryAPI.Infrastructure.Repositories;
+using LibaryAPI.Infrastructure.Models; 
 using LibaryAPI.Infrastructure.Repositories.Interfaces;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.Extensions.Logging; 
 
 namespace LibaryAPI.Application.Services;
 
-public class AbstractService<TRepository, TModel, TGet, TCreate, TUpdate> : IAbstractService<TGet, TCreate, TUpdate>
+public class AbstractService<TRepository, TModel, TGet, TCreate, TUpdate>
     where TRepository : IAbstractRepository<TModel>
     where TModel : BaseModel
     where TGet : IGet
@@ -76,6 +72,5 @@ public class AbstractService<TRepository, TModel, TGet, TCreate, TUpdate> : IAbs
         var result = mapper.Map<TGet>(model); 
         logger.LogInformation($"{model.UpdatedTime} - {model.Id}");
         return result;
-
     }
 }

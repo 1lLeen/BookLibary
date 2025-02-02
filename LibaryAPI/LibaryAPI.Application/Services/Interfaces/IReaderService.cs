@@ -2,11 +2,8 @@
 
 namespace LibaryAPI.Application.Services.Interfaces;
 
-public interface IReaderService:IAbstractService<GetReaderDto, CreateReaderDto, UpdateReaderDto>
+public interface IReaderService : IAbstractService<GetReaderDto, CreateReaderDto, UpdateReaderDto>
 {
-    Task<GetReaderDto> GetReadersAsync();
-    Task<GetReaderDto> GetReaderByIdAsync(int id);
-    Task<CreateReaderDto> CreateReaderAsync(CreateReaderDto entity);
-    Task<UpdateReaderDto> UpdateReaderAsync(int id, UpdateReaderDto entity);
-    Task<GetReaderDto> DeleteReaderAsync(int id);
+    Task<IEnumerable<GetReaderDto>> GetReadersByFullNameAsync(string fullName);
+    Task<IEnumerable<GetReaderDto>> GetReadersByDateOfBirthAsync(DateTime date);
 }

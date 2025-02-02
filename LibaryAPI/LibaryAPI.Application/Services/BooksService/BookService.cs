@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LibaryAPI.Application.Services.Interfaces;
 using LibaryAPI.Domain.DTOs.Books;
 using LibaryAPI.Domain.Interfaces;
 using LibaryAPI.Infrastructure.Models.Books;
@@ -7,47 +8,21 @@ using Microsoft.Extensions.Logging;
 
 namespace LibaryAPI.Application.Services.BooksService;
 
-public class BookService : AbstractService<IBookRepository, BookModel, IGet, ICreate, IUpdate>
+public class BookService : AbstractService<IBookRepository, BookModel, GetBookDto, CreateBookDto, UpdateBookDto>,
+    IBookService
 {
     public BookService(ILogger logger, IMapper mapper, IBookRepository repository) : base(logger, mapper, repository)
     {
     }
-
-    public async Task<GetBookDto> GetBookByIdAsync(int id)
+    public async Task<IEnumerable<GetBookDto>> GetBooksByAuthorAsync(string author)
     {
-        var book = await _repository.GetByIdAsync(id);
-        return mapper.Map<GetBookDto>(book);
+        var result = await _repository.GetAllAsync();
+        return mapper.Map<IEnumerable<GetBookDto>>(result.Where(x => x.Author == author));
     }
 
-    public async Task<IEnumerable<GetBookDto>> GetAllBooksAsync()
+    public async Task<IEnumerable<GetBookDto>> GetBooksByPublisherAsync(string publisher)
     {
-        return mapper.Map<IEnumerable<GetBookDto>>(await _repository.GetAllAsync());
-    }
-
-    public async Task<GetBookDto> CreateBookAsync(CreateBookDto create)
-    {
-        var result = mapper.Map<GetBookDto>(await _repository.CreateAsync(mapper.Map<BookModel>(create)));
-        return result;
-    }
-
-    public async Task<GetBookDto> UpdateBookAsync(int id, UpdateBookDto updateBookDto)
-    {
-        var book = await _repository.GetByIdAsync(id);
-        if(book != null)
-        {
-            book.Name = updateBookDto.Name;
-            book.Description = updateBookDto.Description;
-            book.Author = updateBookDto.Author;
-            book.Publisher = updateBookDto.Publisher;
-        }
-        var result = mapper.Map<GetBookDto>(await _repository.UpdateAsync(book));
-        return result;
-    }
-
-    public async Task<GetBookDto> DeleteBook(int id)
-    {
-        var book = await _repository.GetByIdAsync(id);
-        var result = await _repository.DeleteAsync(book);
-        return mapper.Map<GetBookDto>(result);
+        var result = await _repository.GetAllAsync();
+        return mapper.Map<IEnumerable<GetBookDto>>(result.Where(x => x.Publisher == publisher));
     }
 }

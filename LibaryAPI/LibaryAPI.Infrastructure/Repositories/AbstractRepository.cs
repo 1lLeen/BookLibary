@@ -35,12 +35,12 @@ public class AbstractRepository<TModel> : IAbstractRepository<TModel> where TMod
         return await _dbSet.ToListAsync();
     }
 
-    public async Task<TModel> GetByIdAsync(int id)
+    public async Task<TModel?> GetByIdAsync(int id)
     {
         return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<TModel> GetAsync(TModel model)
+    public async Task<TModel?> GetAsync(TModel model)
     {
         return await _dbSet.FindAsync(model);
     }

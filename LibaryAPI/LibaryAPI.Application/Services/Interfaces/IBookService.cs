@@ -2,12 +2,8 @@
 
 namespace LibaryAPI.Application.Services.Interfaces;
 
-public interface IBookService:IAbstractService<GetBookDto, CreateBookDto, UpdateBookDto>
+public interface IBookService : IAbstractService<GetBookDto, CreateBookDto, UpdateBookDto>
 {
-    Task<IEnumerable<GetBookDto>> GetBooksAsync();
-    Task<GetBookDto> GetBookByIdAsync(int id);
-    Task<GetBookDto> CreateBookAsync(CreateBookDto request);
-    Task<GetBookDto> UpdateBookAsync(int id, UpdateBookDto request);
-    Task<GetBookDto> DeleteBookAsync(string id);
-
+    Task<IEnumerable<GetBookDto>> GetBooksByAuthorAsync(string author);
+    Task<IEnumerable<GetBookDto>> GetBooksByPublisherAsync(string publisher);
 }

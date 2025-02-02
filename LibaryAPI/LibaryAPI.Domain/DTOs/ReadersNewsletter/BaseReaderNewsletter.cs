@@ -1,8 +1,11 @@
 ﻿using LibaryAPI.Domain.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace LibaryAPI.Domain.DTOs.ReadersNewsletter;
+
 public class BaseReaderNewsletter:IBase
 {
+    [SwaggerSchema(ReadOnly = true)]
     public int Id { get; set; }
     public int IdBook { get; set; }
     public int IdReader { get; set; }

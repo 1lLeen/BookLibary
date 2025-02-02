@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace LibaryAPI.Controllers;
 
-[Route("api/[controller]/[action]")] 
+[Route("api/[controller]/[action]")]
+[ApiController]
 public class BookController : ControllerBase
 {
     protected readonly IBookService _bookService;
@@ -29,10 +30,10 @@ public class BookController : ControllerBase
         return await _bookService.GetByIdAsync(id);
     }
 
-    [HttpGet("{author}")]
-    public async Task<IEnumerable<GetBookDto>> GetBooksByAuthorAsync(string author)
+    [HttpGet("{authorId}")]
+    public async Task<IEnumerable<GetBookDto>> GetBooksByAuthorAsync(int authorId)
     {
-        return await _bookService.GetBooksByAuthorAsync(author);
+        return await _bookService.GetBooksByAuthorAsync(authorId);
     }
 
     [HttpGet("{publisher}")]

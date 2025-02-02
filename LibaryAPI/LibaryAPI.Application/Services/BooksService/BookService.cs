@@ -14,10 +14,10 @@ public class BookService : AbstractService<IBookRepository, BookModel, GetBookDt
     public BookService(ILogger logger, IMapper mapper, IBookRepository repository) : base(logger, mapper, repository)
     {
     }
-    public async Task<IEnumerable<GetBookDto>> GetBooksByAuthorAsync(string author)
+    public async Task<IEnumerable<GetBookDto>> GetBooksByAuthorAsync(int authorId)
     {
         var result = await _repository.GetAllAsync();
-        return mapper.Map<IEnumerable<GetBookDto>>(result.Where(x => x.Author == author));
+        return mapper.Map<IEnumerable<GetBookDto>>(result.Where(x => x.AuthorId == authorId));
     }
 
     public async Task<IEnumerable<GetBookDto>> GetBooksByPublisherAsync(string publisher)

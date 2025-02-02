@@ -3,6 +3,7 @@ using System;
 using LibaryAPI.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LibaryAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(LibaryDbContext))]
-    partial class LibaryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250202161413_ChangeAuthorToAuthorIdBookTable")]
+    partial class ChangeAuthorToAuthorIdBookTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

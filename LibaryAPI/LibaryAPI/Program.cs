@@ -11,7 +11,7 @@ builder.Configuration
 .AddEnvironmentVariables()
 .Build();
 
-builder.Services.AddDbContext<LibaryDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaulConneection")));
+builder.Services.AddDbContext<LibaryDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.RegistrationLogger();
 builder.Services.RegistrationAutoMapper();
 builder.Services.RegistrationRepositories();

@@ -23,7 +23,7 @@ public class ReaderService : AbstractService<IReaderRepository, ReaderModel, Get
     public async Task<IEnumerable<GetReaderDto>> GetReadersByFullNameAsync(string fullName)
     {
         var result = await _repository.GetAllAsync();
-        return mapper.Map<IEnumerable<GetReaderDto>>(result.Where(x => x.FullName == fullName))
+        return mapper.Map<IEnumerable<GetReaderDto>>(result.Where(x => x.FullName == fullName));
     }
 }
 

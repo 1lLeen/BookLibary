@@ -21,7 +21,7 @@ public class ReaderNewsletterService : AbstractService<IReaderNewsletterReposito
         return mapper.Map<IEnumerable<GetReaderNewsletter>>(result.Where(x => x.IdReader == readerId));
     }
 
-    public async Task<IEnumerable<GetReaderNewsletter>> GetReadersByBookId(int bookId)
+    public async Task<IEnumerable<GetReaderNewsletter>> GetReadersByBookIdAsync(int bookId)
     {
         var result = await _repository.GetAllAsync();
         return mapper.Map<IEnumerable<GetReaderNewsletter>>(result.Where(x => x.IdBook == bookId));

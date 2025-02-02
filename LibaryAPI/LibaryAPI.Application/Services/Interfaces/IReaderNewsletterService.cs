@@ -6,5 +6,5 @@ public interface IReaderNewsletterService : IAbstractService<GetReaderNewsletter
 {
     Task<IEnumerable<GetReaderNewsletter>> GetReadersDelayAsync();
     Task<IEnumerable<GetReaderNewsletter>> GetReadersByReaderIdAsync(int readerId);
-    Task<IEnumerable<GetReaderNewsletter>> GetReadersByBookId(int bookId);
+    Task<IEnumerable<GetReaderNewsletter>> GetReadersByBookIdAsync(int bookId);
 }

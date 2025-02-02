@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibaryAPI.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class ReaderController : ControllerBase
 {
@@ -23,19 +23,19 @@ public class ReaderController : ControllerBase
         return await _readerService.GetAllAsync();
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<GetReaderDto> GetReaderByIdAsync(int id)
     {
         return await _readerService.GetByIdAsync(id);
     }
 
-    [HttpGet]
+    [HttpGet("{fullName}")]
     public async Task<IEnumerable<GetReaderDto>> GetReadersByFullNameAsync(string fullName)
     {
         return await _readerService.GetReadersByFullNameAsync(fullName);
     }
 
-    [HttpGet]
+    [HttpGet("{date}")]
     public async Task<IEnumerable<GetReaderDto>> GetReadersByDateOfBirthAsync(DateTime date)
     {
         return await _readerService.GetReadersByDateOfBirthAsync(date);
@@ -53,7 +53,7 @@ public class ReaderController : ControllerBase
         return await _readerService.UpdateAsync(update);
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<GetReaderDto> DeleteReaderAsync(int id)
     {
         return await _readerService.DeleteAsync(id);

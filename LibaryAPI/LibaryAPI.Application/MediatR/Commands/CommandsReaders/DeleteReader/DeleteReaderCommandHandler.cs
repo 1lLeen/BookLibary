@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibaryAPI.Application.MediatR.Commands.CommandsReaders.DeleteReader;
 
-public class DeleteReaderCommandHandler : AbstractCommandHandler<IReaderRepository, DeleteReaderCommand, GetReaderDto, ReaderModel>,
+public class DeleteReaderCommandHandler : AbstractCommandHandler<IReaderRepository, DeleteReaderCommand, ReaderModel>,
     IRequestHandler<DeleteReaderCommand, GetReaderDto>
 {
     public DeleteReaderCommandHandler(IReaderRepository repository, IMapper mapper)
@@ -19,7 +19,7 @@ public class DeleteReaderCommandHandler : AbstractCommandHandler<IReaderReposito
         _mapper = mapper;
     }
 
-    public override async Task<GetReaderDto> Handle(DeleteReaderCommand command, CancellationToken token)
+    public async Task<GetReaderDto> Handle(DeleteReaderCommand command, CancellationToken token)
     {
         var entity = await _repository.GetByIdAsync(command.Id);
 

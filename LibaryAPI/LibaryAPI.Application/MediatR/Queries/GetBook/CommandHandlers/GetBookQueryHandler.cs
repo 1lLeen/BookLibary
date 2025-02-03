@@ -6,13 +6,13 @@ using LibaryAPI.Infrastructure.Models.Books;
 using LibaryAPI.Infrastructure.Repositories.Interfaces;
 using MediatR;
 
-namespace LibaryAPI.Application.MediatR.Queries.GetBook;
+namespace LibaryAPI.Application.MediatR.Queries.GetBook.CommandHandlers;
 
-public class GetBookQueryHandler : 
+public class GetBookQueryHandler :
     AbstractCommandHandler<IBookRepository, GetBookQuery, BookModel>,
     IRequestHandler<GetBookQuery, GetBookDto>
 {
-    public GetBookQueryHandler(IBookRepository bookRepository,  IMapper mapper)
+    public GetBookQueryHandler(IBookRepository bookRepository, IMapper mapper)
     {
         _repository = bookRepository;
         _mapper = mapper;
@@ -21,10 +21,10 @@ public class GetBookQueryHandler :
     public async Task<GetBookDto> Handle(GetBookQuery query, CancellationToken token)
     {
         var entity = _repository.GetByIdAsync(query.Id);
-        
+
         if (entity == null)
             throw new NotFoundException(nameof(query.Id), query);
-        
-        return Task.FromResult(_mapper.Map<GetBookDto>(entity));
+
+        return _mapper.Map<GetBookDto>(entity);
     }
 }

@@ -5,10 +5,9 @@ using LibaryAPI.Infrastructure.Repositories.Interfaces;
 
 namespace LibaryAPI.Application.MediatR.Abstract;
 
-public abstract class AbstractCommandHandler<TRepository, TCommand, TGet, TModel>
+public abstract class AbstractCommandHandler<TRepository, TCommand, TModel>
     where TRepository : IAbstractRepository<TModel>
     where TModel : BaseModel
-    where TGet : IGet 
 {
     protected TRepository _repository;
     protected IMapper _mapper;

@@ -12,12 +12,14 @@ builder.Configuration
 .Build();
 
 builder.Services.AddDbContext<LibaryDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+#region AddRegistration
 builder.Services.RegistrationLogger();
 builder.Services.RegistrationAutoMapper();
 builder.Services.RegistrationRepositories();
 builder.Services.RegistrationServices();
-builder.Services.AddControllers();
 builder.Services.RegisterRequestHandlers();
+#endregion
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API WSVAP (WebSmartView)", Version = "v1" });

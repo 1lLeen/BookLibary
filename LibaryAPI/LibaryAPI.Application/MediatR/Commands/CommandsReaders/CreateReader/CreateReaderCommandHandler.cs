@@ -9,7 +9,7 @@ using MediatR;
 
 namespace LibaryAPI.Application.MediatR.Commands.CommandsReaders.CreateReader;
 
-public class CreateReaderCommandHandler : AbstractCommandHandler<IReaderRepository, CreateReaderCommand, GetReaderDto, ReaderModel>,
+public class CreateReaderCommandHandler : AbstractCommandHandler<IReaderRepository, CreateReaderCommand, ReaderModel>,
     IRequestHandler<CreateReaderCommand, GetReaderDto>
 {
     public CreateReaderCommandHandler(IReaderRepository readerRepository, IMapper mapper)
@@ -18,7 +18,7 @@ public class CreateReaderCommandHandler : AbstractCommandHandler<IReaderReposito
         _mapper = mapper;
     }
 
-    public override async Task<GetReaderDto> Handle(CreateReaderCommand command, CancellationToken token)
+    public async Task<GetReaderDto> Handle(CreateReaderCommand command, CancellationToken token)
     {
         var result = _repository.CreateAsync(_mapper.Map<ReaderModel>(command.CreateReaderDto));
         return _mapper.Map<GetReaderDto>(result);

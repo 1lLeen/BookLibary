@@ -7,7 +7,7 @@ using MediatR;
 
 namespace LibaryAPI.Application.MediatR.Commands.CommandsBooks.CreateBook;
 
-public class CreateBookCommandHandler : AbstractCommandHandler<IBookRepository, CreateBookCommand, GetBookDto, BookModel>,
+public class CreateBookCommandHandler : AbstractCommandHandler<IBookRepository, CreateBookCommand, BookModel>,
     IRequestHandler<CreateBookCommand, GetBookDto>
 {
     public CreateBookCommandHandler(IBookRepository repository, IMapper mapper)
@@ -16,7 +16,7 @@ public class CreateBookCommandHandler : AbstractCommandHandler<IBookRepository, 
         _mapper = mapper;
     }
 
-    public override async Task<GetBookDto> Handle(CreateBookCommand request, CancellationToken token)
+    public async Task<GetBookDto> Handle(CreateBookCommand request, CancellationToken token)
     {
         var result = await _repository.CreateAsync(_mapper.Map<BookModel>(request.CreateBookDto));
         return _mapper.Map<GetBookDto>(result);

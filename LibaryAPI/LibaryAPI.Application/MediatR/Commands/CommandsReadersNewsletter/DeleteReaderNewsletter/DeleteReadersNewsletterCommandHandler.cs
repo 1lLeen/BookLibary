@@ -9,7 +9,7 @@ using MediatR;
 namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.DeleteReaderNewsletter;
 
 public class DeleteReadersNewsletterCommandHandler :
-    AbstractCommandHandler<IReaderNewsletterRepository, DeleteReaderNewsletterCommand, GetReaderNewsletterDto, ReaderNewsletterModel>,
+    AbstractCommandHandler<IReaderNewsletterRepository, DeleteReaderNewsletterCommand, ReaderNewsletterModel>,
     IRequestHandler<DeleteReaderNewsletterCommand, GetReaderNewsletterDto>
 {
     public DeleteReadersNewsletterCommandHandler(IReaderNewsletterRepository repository, IMapper mapper)
@@ -18,7 +18,7 @@ public class DeleteReadersNewsletterCommandHandler :
         _mapper = mapper;
     }
 
-    public override async Task<GetReaderNewsletterDto> Handle(DeleteReaderNewsletterCommand command, CancellationToken token)
+    public async Task<GetReaderNewsletterDto> Handle(DeleteReaderNewsletterCommand command, CancellationToken token)
     {
         var entity = await _repository.GetByIdAsync(command.Id);
         if (entity == null)

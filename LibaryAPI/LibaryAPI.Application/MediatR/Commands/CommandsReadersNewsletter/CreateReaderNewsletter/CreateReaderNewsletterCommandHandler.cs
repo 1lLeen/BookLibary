@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Routing.Matching;
 namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.CreateReaderNewsletter;
 
 public class CreateReaderNewsletterCommandHandler :
-    AbstractCommandHandler<IReaderNewsletterRepository, CreateReaderNewsletterCommand, GetReaderNewsletterDto, ReaderNewsletterModel>,
+    AbstractCommandHandler<IReaderNewsletterRepository, CreateReaderNewsletterCommand, ReaderNewsletterModel>,
     IRequestHandler<CreateReaderNewsletterCommand, GetReaderNewsletterDto>
 {
     public CreateReaderNewsletterCommandHandler(IReaderNewsletterRepository readerNewsletterRepository, IMapper mapper)
@@ -18,7 +18,7 @@ public class CreateReaderNewsletterCommandHandler :
         _mapper = mapper;
     }
 
-    public override async Task<GetReaderNewsletterDto> Handle(CreateReaderNewsletterCommand command, CancellationToken cancellationToken)
+    public async Task<GetReaderNewsletterDto> Handle(CreateReaderNewsletterCommand command, CancellationToken cancellationToken)
     {
         var result = await _repository.CreateAsync(_mapper.Map<ReaderNewsletterModel>(command.CreateReaderNewsletterDto));
         return _mapper.Map<GetReaderNewsletterDto>(result);

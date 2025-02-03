@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibaryAPI.Application.MediatR.Commands.CommandsBooks.DeleteBook;
 
-public class DeleteBookCommandHandler : AbstractCommandHandler<IBookRepository, DeleteBookCommand, GetBookDto, BookModel>,
+public class DeleteBookCommandHandler : AbstractCommandHandler<IBookRepository, DeleteBookCommand, BookModel>,
     IRequestHandler<DeleteBookCommand, GetBookDto>
 {
     public DeleteBookCommandHandler(IBookRepository bookRepository, IMapper mapper)
@@ -19,7 +19,7 @@ public class DeleteBookCommandHandler : AbstractCommandHandler<IBookRepository, 
         _mapper = mapper;
     }
 
-    public override async Task<GetBookDto> Handle(DeleteBookCommand command, CancellationToken token)
+    public async Task<GetBookDto> Handle(DeleteBookCommand command, CancellationToken token)
     {
         var entity = await _repository.GetByIdAsync(command.Id);
         if (entity == null)

@@ -6,10 +6,10 @@ using LibaryAPI.Infrastructure.Repositories.Interfaces;
 using MediatR;
 using System.Security.Cryptography.X509Certificates;
 
-namespace LibaryAPI.Application.MediatR.Queries.GetBook;
+namespace LibaryAPI.Application.MediatR.Queries.GetBook.CommandHandlers;
 
 public class GetBookListQueryHandler :
-    AbstractCommandHandler<IBookRepository, GetBooksListQuery, GetBookDto, BookModel>,
+    AbstractCommandHandler<IBookRepository, GetBooksListQuery, BookModel>,
     IRequestHandler<GetBooksListQuery, ListBook>
 {
     public GetBookListQueryHandler(IBookRepository bookRepository, IMapper mapper)
@@ -17,7 +17,7 @@ public class GetBookListQueryHandler :
         _repository = bookRepository;
         _mapper = mapper;
     }
-    public override async Task<ListBook> Handle(GetBooksListQuery request, CancellationToken cancellationToken)
+    public async Task<ListBook> Handle(GetBooksListQuery request, CancellationToken cancellationToken)
     {
         var result = await _repository.GetAllAsync();
         return new ListBook { ListBooks = _mapper.Map<IEnumerable<GetBookDto>>(result) };

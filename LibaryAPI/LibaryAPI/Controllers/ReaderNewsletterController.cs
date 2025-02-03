@@ -18,43 +18,43 @@ public class ReaderNewsletterController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<GetReaderNewsletter>> GetReadersNewsletters()
+    public async Task<IEnumerable<GetReaderNewsletterDto>> GetReadersNewsletters()
     {
         return await _readerNewsletterService.GetAllAsync();
     }
 
     [HttpGet]
-    public async Task<IEnumerable<GetReaderNewsletter>> GetReadersDelayAsync()
+    public async Task<IEnumerable<GetReaderNewsletterDto>> GetReadersDelayAsync()
     {
         return await _readerNewsletterService.GetReadersDelayAsync();
     }
 
     [HttpGet("{id}")]
-    public async Task<IEnumerable<GetReaderNewsletter>> GetReadersByIdAsync(int id)
+    public async Task<IEnumerable<GetReaderNewsletterDto>> GetReadersByIdAsync(int id)
     {
         return await _readerNewsletterService.GetReadersByReaderIdAsync(id);
     }
 
     [HttpGet("{id}")]
-    public async Task<IEnumerable<GetReaderNewsletter>> GetReadersByBookId(int id)
+    public async Task<IEnumerable<GetReaderNewsletterDto>> GetReadersByBookId(int id)
     {
         return await _readerNewsletterService.GetReadersByBookIdAsync(id);
     }
 
     [HttpPost] 
-    public async Task<GetReaderNewsletter> CreateReaderNewsletter(CreateReaderNewsletter create)
+    public async Task<GetReaderNewsletterDto> CreateReaderNewsletter(CreateReaderNewsletterDto create)
     {
         return await _readerNewsletterService.CreateAsync(create);
     }
 
     [HttpPut]
-    public async Task<GetReaderNewsletter> UpdateReaderNewsletter(int id, UpdateReaderNewsletter update)
+    public async Task<GetReaderNewsletterDto> UpdateReaderNewsletter(int id, UpdateReaderNewsletterDto update)
     {
         return await _readerNewsletterService.UpdateReaderNewsletterAsync(id, update);
     }
 
     [HttpDelete("{id}")]
-    public async Task<GetReaderNewsletter> DeleteReaderNewsletter(int id)
+    public async Task<GetReaderNewsletterDto> DeleteReaderNewsletter(int id)
     {
         return await _readerNewsletterService.DeleteAsync(id);
     }

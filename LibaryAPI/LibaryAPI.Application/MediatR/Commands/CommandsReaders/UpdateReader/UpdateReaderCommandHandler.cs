@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LibaryAPI.Application.MediatR.Abstract;
 using LibaryAPI.Application.MediatR.CommandException;
 using LibaryAPI.Domain.DTOs.Books;
 using LibaryAPI.Domain.DTOs.Readers;
@@ -8,10 +9,10 @@ using LibaryAPI.Infrastructure.Repositories.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibaryAPI.Application.MediatR.CommandsReaders.UpdateReader;
+namespace LibaryAPI.Application.MediatR.Commands.CommandsReaders.UpdateReader;
 
 public class UpdateReaderCommandHandler : AbstractCommandHandler<IReaderRepository, UpdateReaderCommand, GetReaderDto, ReaderModel>,
-    IRequestHandler<UpdateReaderCommand, GetReaderDto> 
+    IRequestHandler<UpdateReaderCommand, GetReaderDto>
 {
     public UpdateReaderCommandHandler(IReaderRepository repository, IMapper mapper)
     {

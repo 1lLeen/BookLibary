@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace LibaryAPI.Domain.DTOs.ReadersNewsletter;
 
-public class CreateReaderNewsletter:BaseReaderNewsletter, ICreate
+public class CreateReaderNewsletterDto:BaseReaderNewsletterDto, ICreate
 {
     [SwaggerSchema(ReadOnly = true)]
     public DateTime CreatedTime { get; set; }

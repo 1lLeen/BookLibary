@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LibaryAPI.Application.MediatR.Abstract;
 using LibaryAPI.Application.MediatR.CommandException;
 using LibaryAPI.Domain.DTOs.Books;
 using LibaryAPI.Infrastructure;
@@ -7,7 +8,7 @@ using LibaryAPI.Infrastructure.Repositories.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibaryAPI.Application.MediatR.CommandsBooks.UpdateBook;
+namespace LibaryAPI.Application.MediatR.Commands.CommandsBooks.UpdateBook;
 
 public class UpdateBookCommandHandler : AbstractCommandHandler<IBookRepository, UpdateBookCommand, GetBookDto, BookModel>,
     IRequestHandler<UpdateBookCommand, GetBookDto>

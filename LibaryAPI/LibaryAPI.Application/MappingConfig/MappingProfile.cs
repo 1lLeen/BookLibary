@@ -28,12 +28,12 @@ public class MappingProfile:Profile
         CreateMap<ReaderModel, UpdateReaderDto>();
         #endregion
         #region ReaderNewsletterMap
-        CreateMap<ReaderNewsletterModel, GetReaderNewsletter>().ReverseMap();
+        CreateMap<ReaderNewsletterModel, GetReaderNewsletterDto>().ReverseMap();
         CreateMap<ReaderNewsletterModel, CreateReaderNewsletterDto>().ReverseMap();
-        CreateMap<ReaderNewsletterModel, UpdateReaderNewsletter>().ReverseMap();
-        CreateMap<ReaderNewsletterModel, GetReaderNewsletter>();
+        CreateMap<ReaderNewsletterModel, UpdateReaderNewsletterDto>().ReverseMap();
+        CreateMap<ReaderNewsletterModel, GetReaderNewsletterDto>();
         CreateMap<ReaderNewsletterModel, CreateReaderNewsletterDto>();
-        CreateMap<ReaderNewsletterModel, UpdateReaderNewsletter>();
+        CreateMap<ReaderNewsletterModel, UpdateReaderNewsletterDto>();
         #endregion
     }
 }

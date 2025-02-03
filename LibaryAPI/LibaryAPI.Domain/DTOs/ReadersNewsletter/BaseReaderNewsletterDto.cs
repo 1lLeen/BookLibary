@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace LibaryAPI.Domain.DTOs.ReadersNewsletter;
 
-public class BaseReaderNewsletter:IBase
+public class BaseReaderNewsletterDto:IBase
 {
     [SwaggerSchema(ReadOnly = true)]
     public int Id { get; set; }

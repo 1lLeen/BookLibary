@@ -2,10 +2,10 @@
 
 namespace LibaryAPI.Application.Services.Interfaces;
 
-public interface IReaderNewsletterService : IAbstractService<GetReaderNewsletter, CreateReaderNewsletter, UpdateReaderNewsletter>
+public interface IReaderNewsletterService : IAbstractService<GetReaderNewsletterDto, CreateReaderNewsletterDto, UpdateReaderNewsletterDto>
 {
-    Task<GetReaderNewsletter> UpdateReaderNewsletterAsync(int id, UpdateReaderNewsletter updatel);
-    Task<IEnumerable<GetReaderNewsletter>> GetReadersDelayAsync();
-    Task<IEnumerable<GetReaderNewsletter>> GetReadersByReaderIdAsync(int readerId);
-    Task<IEnumerable<GetReaderNewsletter>> GetReadersByBookIdAsync(int bookId);
+    Task<GetReaderNewsletterDto> UpdateReaderNewsletterAsync(int id, UpdateReaderNewsletterDto updatel);
+    Task<IEnumerable<GetReaderNewsletterDto>> GetReadersDelayAsync();
+    Task<IEnumerable<GetReaderNewsletterDto>> GetReadersByReaderIdAsync(int readerId);
+    Task<IEnumerable<GetReaderNewsletterDto>> GetReadersByBookIdAsync(int bookId);
 }

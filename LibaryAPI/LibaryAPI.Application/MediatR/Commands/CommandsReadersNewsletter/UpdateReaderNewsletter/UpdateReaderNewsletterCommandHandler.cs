@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LibaryAPI.Application.MediatR.Abstract;
 using LibaryAPI.Application.MediatR.CommandException;
 using LibaryAPI.Domain.DTOs.Books;
 using LibaryAPI.Domain.DTOs.ReadersNewsletter;
@@ -6,9 +7,9 @@ using LibaryAPI.Infrastructure.Models.Readers;
 using LibaryAPI.Infrastructure.Repositories.Interfaces;
 using MediatR;
 
-namespace LibaryAPI.Application.MediatR.CommandsReadersNewsletter.UpdateReaderNewsletter;
+namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.UpdateReaderNewsletter;
 
-public class UpdateReaderNewsletterCommandHandler : 
+public class UpdateReaderNewsletterCommandHandler :
     AbstractCommandHandler<IReaderNewsletterRepository, UpdateReaderNewsletterCommand, GetReaderNewsletterDto, ReaderNewsletterModel>,
     IRequestHandler<UpdateReaderNewsletterCommand, GetReaderNewsletterDto>
 {

@@ -1,7 +1,7 @@
 ﻿using LibaryAPI.Domain.DTOs.ReadersNewsletter;
 using MediatR;
 
-namespace LibaryAPI.Application.MediatR.CommandsReadersNewsletter.CreateReaderNewsletter;
+namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.CreateReaderNewsletter;
 
 public class CreateReaderNewsletterCommand : IRequest<GetReaderNewsletterDto>
 {

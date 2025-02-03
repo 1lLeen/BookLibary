@@ -16,4 +16,8 @@
     <ProjectReference Include="..\LibaryAPI.Infrastructure\LibaryAPI.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MediatR\Queries\GetReader\" />
+  </ItemGroup>
+
 </Project>

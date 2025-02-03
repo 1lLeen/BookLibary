@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
+using LibaryAPI.Application.MediatR.Abstract;
 using LibaryAPI.Application.MediatR.CommandException;
 using LibaryAPI.Domain.DTOs.ReadersNewsletter;
 using LibaryAPI.Infrastructure.Models.Readers;
 using LibaryAPI.Infrastructure.Repositories.Interfaces;
 using MediatR;
 
-namespace LibaryAPI.Application.MediatR.CommandsReadersNewsletter.DeleteReaderNewsletter;
+namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.DeleteReaderNewsletter;
 
-public class DeleteReadersNewsletterCommandHandler : 
+public class DeleteReadersNewsletterCommandHandler :
     AbstractCommandHandler<IReaderNewsletterRepository, DeleteReaderNewsletterCommand, GetReaderNewsletterDto, ReaderNewsletterModel>,
     IRequestHandler<DeleteReaderNewsletterCommand, GetReaderNewsletterDto>
 {

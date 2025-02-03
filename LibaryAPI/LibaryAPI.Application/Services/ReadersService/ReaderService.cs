@@ -27,12 +27,6 @@ public class ReaderService : AbstractService<IReaderRepository, ReaderModel, Get
         return mapper.Map<GetReaderDto>(result);
     }
 
-    public async Task<IEnumerable<GetReaderDto>> GetReadersByDateOfBirthAsync(DateTime date)
-    {
-        var result = await _repository.GetAllAsync();
-        return mapper.Map<IEnumerable<GetReaderDto>>(result.Where(x => x.DateOfBirth == date));
-    }
-
     public async Task<IEnumerable<GetReaderDto>> GetReadersByFullNameAsync(string fullName)
     {
         var result = await _repository.GetAllAsync();

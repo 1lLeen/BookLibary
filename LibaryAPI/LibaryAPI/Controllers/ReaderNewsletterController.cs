@@ -50,7 +50,7 @@ public class ReaderNewsletterController : ControllerBase
     [HttpPut]
     public async Task<GetReaderNewsletter> UpdateReaderNewsletter(int id, UpdateReaderNewsletter update)
     {
-        return await _readerNewsletterService.UpdateAsync(update);
+        return await _readerNewsletterService.UpdateReaderNewsletterAsync(id, update);
     }
 
     [HttpDelete("{id}")]

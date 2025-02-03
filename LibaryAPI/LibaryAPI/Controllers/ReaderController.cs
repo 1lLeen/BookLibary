@@ -35,12 +35,6 @@ public class ReaderController : ControllerBase
         return await _readerService.GetReadersByFullNameAsync(fullName);
     }
 
-    [HttpGet("{date}")]
-    public async Task<IEnumerable<GetReaderDto>> GetReadersByDateOfBirthAsync(DateTime date)
-    {
-        return await _readerService.GetReadersByDateOfBirthAsync(date);
-    }
-
     [HttpPost]
     public async Task<GetReaderDto> CreateReaderAsync(CreateReaderDto create)
     {
@@ -50,7 +44,7 @@ public class ReaderController : ControllerBase
     [HttpPut]
     public async Task<GetReaderDto> UpdateReaderAsync(int id, UpdateReaderDto update)
     {
-        return await _readerService.UpdateAsync(update);
+        return await _readerService.UpdateReaderAsync(id, update);
     }
 
     [HttpDelete("{id}")]

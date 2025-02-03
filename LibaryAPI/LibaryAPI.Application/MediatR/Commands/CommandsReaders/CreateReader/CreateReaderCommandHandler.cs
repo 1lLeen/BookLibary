@@ -20,7 +20,7 @@ public class CreateReaderCommandHandler : AbstractCommandHandler<IReaderReposito
 
     public async Task<GetReaderDto> Handle(CreateReaderCommand command, CancellationToken token)
     {
-        var result = _repository.CreateAsync(_mapper.Map<ReaderModel>(command.CreateReaderDto));
+        var result = await _repository.CreateAsync(_mapper.Map<ReaderModel>(command.CreateReaderDto));
         return _mapper.Map<GetReaderDto>(result);
     }
 }

@@ -18,7 +18,7 @@ public class GetReadersNewsletterQueryHandler :
 
     public async Task<ListReadersNewsletter> Handle(GetReadersNewsletterQuery command, CancellationToken token)
     {
-        var result = _repository.GetAllAsync();
+        var result = await _repository.GetAllAsync();
         return new ListReadersNewsletter { ReadersNewsletter = _mapper.Map<IEnumerable<GetReaderNewsletterDto>>(result) };
     }
 }

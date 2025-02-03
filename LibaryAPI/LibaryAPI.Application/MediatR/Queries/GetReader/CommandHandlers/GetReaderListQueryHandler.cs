@@ -19,7 +19,7 @@ public class GetReaderListQueryHandler :
 
     public async Task<ListReaders> Handle(GetReadersListQuery command, CancellationToken token)
     {
-        var result = _repository.GetAllAsync();
+        var result = await _repository.GetAllAsync();
         return new ListReaders {Readers = _mapper.Map<IEnumerable<GetReaderDto>>(result)};
     }
 }

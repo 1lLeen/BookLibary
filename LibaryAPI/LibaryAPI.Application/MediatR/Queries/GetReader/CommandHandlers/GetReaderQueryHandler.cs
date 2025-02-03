@@ -21,7 +21,7 @@ public class GetReaderQueryHandler :
 
     public async Task<GetReaderDto> Handle(GetReaderQuery command, CancellationToken cancellationToken)
     {
-        var entity = _repository.GetByIdAsync(command.Id);
+        var entity = await _repository.GetByIdAsync(command.Id);
 
         if (entity == null)
             throw new NotFoundException(nameof(command.Id), command);

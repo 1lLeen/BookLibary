@@ -20,7 +20,7 @@ public class GetBookQueryHandler :
 
     public async Task<GetBookDto> Handle(GetBookQuery query, CancellationToken token)
     {
-        var entity = _repository.GetByIdAsync(query.Id);
+        var entity = await _repository.GetByIdAsync(query.Id);
 
         if (entity == null)
             throw new NotFoundException(nameof(query.Id), query);

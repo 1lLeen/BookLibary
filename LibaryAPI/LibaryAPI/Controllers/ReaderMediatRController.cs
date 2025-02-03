@@ -18,9 +18,8 @@ public class ReaderMediatRController : ControllerBase
     private ILogger logger;
     
 
-    public ReaderMediatRController(IReaderService readerService, ILogger logger, IMediator mediator)
-    {
-        _readerService = readerService;
+    public ReaderMediatRController(ILogger logger, IMediator mediator)
+    { 
         _mediator = mediator;
         this.logger = logger;
     }

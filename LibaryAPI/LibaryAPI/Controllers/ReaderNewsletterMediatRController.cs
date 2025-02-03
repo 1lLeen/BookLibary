@@ -1,13 +1,7 @@
-﻿using LibaryAPI.Application.MediatR.Commands.CommandsReaders.CreateReader;
-using LibaryAPI.Application.MediatR.Commands.CommandsReaders.DeleteReader;
-using LibaryAPI.Application.MediatR.Commands.CommandsReaders.UpdateReader;
-using LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.CreateReaderNewsletter;
+﻿using LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.CreateReaderNewsletter;
 using LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.DeleteReaderNewsletter;
-using LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.UpdateReaderNewsletter;
-using LibaryAPI.Application.MediatR.Queries.GetReader;
-using LibaryAPI.Application.MediatR.Queries.GetReaderNewsletter;
-using LibaryAPI.Application.Services.Interfaces;
-using LibaryAPI.Domain.DTOs.Readers;
+using LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.UpdateReaderNewsletter; 
+using LibaryAPI.Application.MediatR.Queries.GetReaderNewsletter; 
 using LibaryAPI.Domain.DTOs.ReadersNewsletter;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

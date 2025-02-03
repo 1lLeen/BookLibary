@@ -1,8 +1,7 @@
 ﻿using LibaryAPI.Application.MediatR.Commands.CommandsBooks.CreateBook;
 using LibaryAPI.Application.MediatR.Commands.CommandsBooks.DeleteBook;
 using LibaryAPI.Application.MediatR.Commands.CommandsBooks.UpdateBook; 
-using LibaryAPI.Application.MediatR.Queries.GetBook;
-using LibaryAPI.Application.Services.Interfaces;
+using LibaryAPI.Application.MediatR.Queries.GetBook; 
 using LibaryAPI.Domain.DTOs.Books;
 using MediatR; 
 using Microsoft.AspNetCore.Mvc;
@@ -12,14 +11,12 @@ namespace LibaryAPI.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class BookMedatRController : ControllerBase
-{
-    protected readonly IBookService _bookService;
+{ 
     protected IMediator _mediator;
     private ILogger logger;
 
-    public BookMedatRController(IBookService bookService, ILogger logger, IMediator mediator)
-    {
-        _bookService = bookService;
+    public BookMedatRController(ILogger logger, IMediator mediator)
+    { 
         _mediator = mediator;
         this.logger = logger;
     }

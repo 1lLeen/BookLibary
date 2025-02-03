@@ -29,10 +29,10 @@ public class MappingProfile:Profile
         #endregion
         #region ReaderNewsletterMap
         CreateMap<ReaderNewsletterModel, GetReaderNewsletter>().ReverseMap();
-        CreateMap<ReaderNewsletterModel, CreateReaderNewsletter>().ReverseMap();
+        CreateMap<ReaderNewsletterModel, CreateReaderNewsletterDto>().ReverseMap();
         CreateMap<ReaderNewsletterModel, UpdateReaderNewsletter>().ReverseMap();
         CreateMap<ReaderNewsletterModel, GetReaderNewsletter>();
-        CreateMap<ReaderNewsletterModel, CreateReaderNewsletter>();
+        CreateMap<ReaderNewsletterModel, CreateReaderNewsletterDto>();
         CreateMap<ReaderNewsletterModel, UpdateReaderNewsletter>();
         #endregion
     }

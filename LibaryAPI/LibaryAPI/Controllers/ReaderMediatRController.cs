@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibaryAPI.Controllers;
 
+/// <summary>
+/// Контроллер с MediatR
+/// </summary>
+
 [Route("api/[controller]")]
 [ApiController]
 public class ReaderMediatRController : ControllerBase

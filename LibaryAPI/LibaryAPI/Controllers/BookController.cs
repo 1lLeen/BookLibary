@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibaryAPI.Controllers;
 
+/// <summary>
+/// Контроллер без MediatR
+/// </summary>
+
 [Route("api/[controller]/[action]")] 
 [ApiController]
 public class BookController : ControllerBase

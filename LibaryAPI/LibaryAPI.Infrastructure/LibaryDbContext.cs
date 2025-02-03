@@ -26,7 +26,7 @@ public class LibaryDbContext:DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Libary;Username=postgres;Password=jangir001");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Libary;Username=postgres;Password=jangir001");//Нужно вставить свои данные
         ///*UseNpgsql был вызван для того что не понятной мне причине миграциия никак не хотела себя проявлять*//
         ///*Пытался без этого метода через проект LibaryAPI и LibaryAPI.Infrastructure но выдавлвал разные ошибки
         ///*и что бы не тратить время сделал так*//

@@ -8,10 +8,23 @@ using Microsoft.Extensions.Logging;
 
 namespace LibaryAPI.Application.Services.ReadersService;
 
-public class ReaderService : AbstractService<IReaderRepository, ReaderModel, GetReaderDto, CreateReaderDto, UpdateReaderDto>, IReaderService
+public class ReaderService : AbstractService<IReaderRepository, ReaderModel, GetReaderDto, CreateReaderDto, UpdateReaderDto>,
+    IReaderService
 {
     public ReaderService(ILogger logger, IMapper mapper, IReaderRepository repository) : base(logger, mapper, repository)
     {
+    }
+
+    public async Task<GetReaderDto> UpdateReaderAsync(int id,  UpdateReaderDto update)
+    {
+        var model = await _repository.GetByIdAsync(id);
+
+        model.FullName = update.FullName;
+        model.DateOfBirth = update.DateOfBirth;
+        model.AccountNumber = update.AccountNumber;
+        
+        var result = await _repository.UpdateAsync(model);
+        return mapper.Map<GetReaderDto>(result);
     }
 
     public async Task<IEnumerable<GetReaderDto>> GetReadersByDateOfBirthAsync(DateTime date)

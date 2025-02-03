@@ -14,6 +14,19 @@ public class ReaderNewsletterService : AbstractService<IReaderNewsletterReposito
     public ReaderNewsletterService(ILogger logger, IMapper mapper, IReaderNewsletterRepository repository) : base(logger, mapper, repository)
     {
     }
+    
+    public async Task<GetReaderNewsletter> UpdateReaderNewsletterAsync(int id,  UpdateReaderNewsletter update)
+    {
+        var model = await _repository.GetByIdAsync(id);
+        
+        model.ReturnDate = update.ReturnDate;
+        model.DateOfReceipt = update.DateOfReceipt;
+        model.IdReader = update.IdReader;
+        model.IdBook = update.IdBook;
+
+        var result = await _repository.UpdateAsync(model);
+        return mapper.Map<GetReaderNewsletter>(result);
+    }
 
     public async Task<IEnumerable<GetReaderNewsletter>> GetReadersByReaderIdAsync(int readerId)
     {

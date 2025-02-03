@@ -48,7 +48,7 @@ public class ReaderController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<GetReaderDto> UpdateReaderAsync(UpdateReaderDto update)
+    public async Task<GetReaderDto> UpdateReaderAsync(int id, UpdateReaderDto update)
     {
         return await _readerService.UpdateAsync(update);
     }

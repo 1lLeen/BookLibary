@@ -48,7 +48,7 @@ public class ReaderNewsletterController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<GetReaderNewsletter> UpdateReaderNewsletter(UpdateReaderNewsletter update)
+    public async Task<GetReaderNewsletter> UpdateReaderNewsletter(int id, UpdateReaderNewsletter update)
     {
         return await _readerNewsletterService.UpdateAsync(update);
     }

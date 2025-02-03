@@ -6,5 +6,7 @@ namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.Creat
 public class CreateReaderNewsletterCommand : IRequest<GetReaderNewsletterDto>
 {
     public CreateReaderNewsletterDto CreateReaderNewsletterDto { get; set; }
+    public CreateReaderNewsletterCommand(CreateReaderNewsletterDto createReaderNewsletterDto) =>
+        CreateReaderNewsletterDto = createReaderNewsletterDto;
 }
 

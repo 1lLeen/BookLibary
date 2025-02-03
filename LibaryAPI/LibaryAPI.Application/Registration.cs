@@ -33,6 +33,14 @@ public static class Registration
         services.AddTransient<IReaderService, ReaderService>();
         services.AddTransient<IReaderNewsletterService, ReaderNewsletterService>();
     }
-
+     
 }
-
+public static class MediatRDependencyHandler
+{
+    public static IServiceCollection RegisterRequestHandlers(
+    this IServiceCollection services)
+    {
+        return services
+            .AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(MediatRDependencyHandler).Assembly));
+    }
+}

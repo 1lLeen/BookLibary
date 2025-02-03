@@ -17,6 +17,7 @@ builder.Services.RegistrationAutoMapper();
 builder.Services.RegistrationRepositories();
 builder.Services.RegistrationServices();
 builder.Services.AddControllers();
+builder.Services.RegisterRequestHandlers();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API WSVAP (WebSmartView)", Version = "v1" });

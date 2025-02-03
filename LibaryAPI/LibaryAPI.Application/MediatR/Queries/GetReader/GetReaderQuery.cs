@@ -7,5 +7,6 @@ namespace LibaryAPI.Application.MediatR.Queries.GetReader;
 public class GetReaderQuery : IRequest<GetReaderDto>
 {
     public GetReaderDto GetReaderDto{ get; set; }
+    public GetReaderQuery(GetReaderDto GetReaderDto) => this.GetReaderDto = GetReaderDto;
 }
 

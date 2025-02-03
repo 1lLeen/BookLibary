@@ -6,4 +6,5 @@ namespace LibaryAPI.Application.MediatR.Commands.CommandsReaders.CreateReader;
 public class CreateReaderCommand : IRequest<GetReaderDto>
 {
     public CreateReaderDto CreateReaderDto { get; set; }
+    public CreateReaderCommand(CreateReaderDto createReaderDto) => CreateReaderDto = createReaderDto;
 }

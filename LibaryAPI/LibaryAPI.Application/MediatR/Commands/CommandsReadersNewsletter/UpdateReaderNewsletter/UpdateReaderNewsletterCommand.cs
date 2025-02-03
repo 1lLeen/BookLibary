@@ -6,4 +6,11 @@ namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.Updat
 public class UpdateReaderNewsletterCommand : IRequest<GetReaderNewsletterDto>
 {
     public UpdateReaderNewsletterDto UpdateReaderNewsletterDto { get; set; }
+    public int Id { get; set; }
+
+    public UpdateReaderNewsletterCommand(int id, UpdateReaderNewsletterDto updateReaderNewsletterDto) 
+    {
+        UpdateReaderNewsletterDto = updateReaderNewsletterDto;
+        Id = id;
+    }
 }

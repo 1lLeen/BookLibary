@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibaryAPI.Application.MediatR.Commands.CommandsReaders.UpdateReader;
 
-public class UpdateReaderCommandHandler : AbstractCommandHandler<IReaderRepository, UpdateReaderCommand, GetReaderDto, ReaderModel>,
+public class UpdateReaderCommandHandler : AbstractCommandHandler<IReaderRepository, UpdateReaderCommand, ReaderModel>,
     IRequestHandler<UpdateReaderCommand, GetReaderDto>
 {
     public UpdateReaderCommandHandler(IReaderRepository repository, IMapper mapper)
@@ -20,12 +20,16 @@ public class UpdateReaderCommandHandler : AbstractCommandHandler<IReaderReposito
         _mapper = mapper;
     }
 
-    public override async Task<GetReaderDto> Handle(UpdateReaderCommand command, CancellationToken token)
+    public async Task<GetReaderDto> Handle(UpdateReaderCommand command, CancellationToken token)
     {
-        var entity = await _repository.GetByIdAsync(command.UpdateReaderDto.Id);
+        var entity = await _repository.GetByIdAsync(command.Id);
 
         if (entity == null)
             throw new NotFoundException(nameof(UpdateBookDto), command.UpdateReaderDto.Id);
+
+        entity.FullName = command.UpdateReaderDto.FullName;
+        entity.AccountNumber = command.UpdateReaderDto.AccountNumber;
+        entity.DateOfBirth = command.UpdateReaderDto.DateOfBirth;
 
         var result = await _repository.UpdateAsync(entity);
 

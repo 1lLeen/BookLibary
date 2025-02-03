@@ -10,7 +10,7 @@ using MediatR;
 namespace LibaryAPI.Application.MediatR.Commands.CommandsReadersNewsletter.UpdateReaderNewsletter;
 
 public class UpdateReaderNewsletterCommandHandler :
-    AbstractCommandHandler<IReaderNewsletterRepository, UpdateReaderNewsletterCommand, GetReaderNewsletterDto, ReaderNewsletterModel>,
+    AbstractCommandHandler<IReaderNewsletterRepository, UpdateReaderNewsletterCommand, ReaderNewsletterModel>,
     IRequestHandler<UpdateReaderNewsletterCommand, GetReaderNewsletterDto>
 {
     public UpdateReaderNewsletterCommandHandler(IReaderNewsletterRepository repository, IMapper mapper)
@@ -19,13 +19,18 @@ public class UpdateReaderNewsletterCommandHandler :
         _mapper = mapper;
     }
 
-    public override async Task<GetReaderNewsletterDto> Handle(UpdateReaderNewsletterCommand command, CancellationToken cancellationToken)
+    public async Task<GetReaderNewsletterDto> Handle(UpdateReaderNewsletterCommand command, CancellationToken cancellationToken)
     {
-        var entity = await _repository.GetByIdAsync(command.UpdateReaderNewsletterDto.Id);
+        var entity = await _repository.GetByIdAsync(command.Id);
 
         if (entity == null)
             throw new NotFoundException(nameof(UpdateBookDto), command.UpdateReaderNewsletterDto.Id);
-
+        
+        entity.IdReader = command.UpdateReaderNewsletterDto.IdReader;
+        entity.IdBook = command.UpdateReaderNewsletterDto.IdBook;
+        entity.ReturnDate = command.UpdateReaderNewsletterDto.ReturnDate;
+        entity.DateOfReceipt = command.UpdateReaderNewsletterDto.DateOfReceipt;
+        
         var result = await _repository.UpdateAsync(entity);
 
         return _mapper.Map<GetReaderNewsletterDto>(result);

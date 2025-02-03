@@ -1,7 +1,6 @@
 ﻿using LibaryAPI.Application.Services.Interfaces;
 using LibaryAPI.Domain.DTOs.Books;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.AspNetCore.Mvc; 
 
 namespace LibaryAPI.Controllers;
 

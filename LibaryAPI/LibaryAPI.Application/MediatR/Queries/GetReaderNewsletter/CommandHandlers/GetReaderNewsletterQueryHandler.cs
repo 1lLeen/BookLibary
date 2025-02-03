@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LibaryAPI.Application.MediatR.Abstract;
+using LibaryAPI.Application.MediatR.CommandException;
 using LibaryAPI.Domain.DTOs.ReadersNewsletter;
 using LibaryAPI.Infrastructure.Models.Readers;
 using LibaryAPI.Infrastructure.Repositories.Interfaces;
@@ -18,8 +19,12 @@ public class GetReaderNewsletterQueryHandler :
 
     public async Task<GetReaderNewsletterDto> Handle(GetReaderNewsletterQuery command, CancellationToken token)
     {
-        var result = _repository.GetAllAsync();
-        return _mapper.Map<GetReaderNewsletterDto>(result);
+        var entity = _repository.GetByIdAsync(command.Id);
+
+        if (entity == null)
+            throw new NotFoundException(nameof(command.Id), command);
+
+        return _mapper.Map<GetReaderNewsletterDto>(entity);
     }
 }
 
